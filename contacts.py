@@ -63,12 +63,13 @@ def print_contacts(contacts: [Contact]):
         # Print the key/value pairs
         kv_pairs = list(contact.kv_pairs.keys())
         kv_pairs.sort()
-        for k in kv_pairs:
-            if k in IGNORED_KEYS:
+        for key in kv_pairs:
+            if key in IGNORED_KEYS:
                 continue
-            spacing = longest_key - len(k)
+            value = contact.get(key)
+            spacing = longest_key - len(key)
             dots = "." * (spacing + 3)
-            print(colored(f"   {k} {dots} {contact.kv_pairs[k]}","white"))
+            print(colored(f"   {key} {dots} {value}", "white"))
 
         # Print notes
         for note in contact.notes:

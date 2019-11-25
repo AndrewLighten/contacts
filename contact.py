@@ -1,4 +1,6 @@
 from dataclasses import dataclass
+from relativedelta import relativedelta
+import datetime
 
 
 @dataclass
@@ -46,3 +48,54 @@ class Contact:
 
         # Not there
         return False
+
+    def get(self, key: str) -> str:
+        """
+        Get the value for a given key.
+        
+        Args:
+            key: The key whose value we want.
+        
+        Returns:
+            str: The value associated with the key.
+        """
+
+        # Find the raw value
+        value = self.kv_pairs.get(key)
+        if not value:
+            return None
+
+        # Intercept date-of-birth and add in their age
+        if key.lower() == "dob":
+            value = value + self._calculate_age(value)
+
+        # Done
+        return value
+
+    def _calculate_age(self, dob: str) -> str:
+        """
+        Calculate someone's age given their date-of-birth.
+        
+        Args:
+            dob: The date of birth, formatted as yyyy-mm-dd.
+        
+        Returns:
+            str: A text description of the person's age.
+        """
+
+        # Catch problems
+        try:
+
+            # Make sure the date-of-birth is formatted ok.
+            birth_date = datetime.datetime.strptime(dob, "%Y-%m-%d")
+
+            # Find today's date
+            today = datetime.datetime.today()
+
+            # Calculate difference
+            age = relativedelta(today, birth_date).years
+            return f" (aged {age})"
+
+        # Parse problem -- ignore it
+        except ValueError:
+            return ""
