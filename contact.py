@@ -72,6 +72,28 @@ class Contact:
         # Done
         return value
 
+    def org_and_role(self) -> str:
+        """
+        Get a representation of a person's organisation and role.
+        
+        If either the "Org" or "Role" keyword is found, the result is a string
+        formatted as "([Role], [Org])".
+        
+        Returns:
+            str: The contact's role and organisation.
+        """
+
+        # Find the organisation and/or role
+        org = self.kv_pairs.get("Org")
+        role = self.kv_pairs.get("Role")
+        if org and role:
+            return " (" + role + ", " + org + ")"
+        if org:
+            return " (" + org + ")"
+        if role:
+            return " (" + role + ")"
+        return ""
+
     def _calculate_age(self, dob: str) -> str:
         """
         Calculate someone's age given their date-of-birth.
