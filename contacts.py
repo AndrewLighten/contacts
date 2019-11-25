@@ -68,7 +68,11 @@ def print_contacts(contacts: [Contact]):
                 continue
             spacing = longest_key - len(k)
             dots = "." * (spacing + 3)
-            print(f"   {k} {dots} {contact.kv_pairs[k]}")
+            print(colored(f"   {k} {dots} {contact.kv_pairs[k]}","white"))
+
+        # Print notes
+        for note in contact.notes:
+            print(colored(f"   - {note}", "yellow"))
 
     # Finish off
     print("")

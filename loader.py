@@ -47,8 +47,10 @@ def load_contacts() -> [Contact]:
                 trimmed = content.lstrip()
 
                 # A note?
-                if trimmed[0] == "-":
-                    current_contact.notes.append(trimmed)
+                if trimmed.startswith("- "):
+                    note = trimmed[2:].strip()
+                    if note:
+                        current_contact.notes.append(note)
 
                 # No, must be keyword:value
                 else:
