@@ -1,0 +1,13 @@
+Metadata-Version: 1.2
+Name: contacts
+Version: 0.1
+Summary: Contact manager
+Home-page: UNKNOWN
+Author: Andrew Lighten
+Author-email: andrew@digital-ironworks.com
+License: UNKNOWN
+Description: UNKNOWN
+Keywords: contacts
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: Python Software Foundation License
+Requires-Python: >=3.7.5
