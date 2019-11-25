@@ -68,12 +68,10 @@ $ contacts roy it support
 
 Found 1 contact:
 
-Roy
+Roy (IT Support, Renham Industries)
 
     Email ... roy@renham-industries.co.uk
-    Org ..... Renham Industries
     Phone ... 0118 999 881 99 9119 7253
-    Role .... IT Support
     - Best friend is Moss
 
 ```
@@ -102,7 +100,7 @@ $
 
 There is no specific rule describing which keywords are allowed. There are a few that are particularly looked for and treated differently, however.
 
-## Nickname
+## `Nickname`
 
 If the `Nickname` keyword is found, it will be searched, but it will _not_ be printed.
 
@@ -129,7 +127,7 @@ Dr Spock
 
 The `Doctor` nickname is suppressed from the printed output.
 
-## DOB
+## `DOB`
 
 If the `DOB` keyword is found, it is assumed to represent a date of birth in the form `yyyy-mm-dd`.
 
@@ -157,4 +155,37 @@ Harry Potter
 
     Email ... harry@hogwarts.co.uk
     DOB ..... 1980-07-31 (aged 39)
+```
+
+## `Role` and `Org`
+
+If a contact has either a `Role` or an `Org` keyword, these details are printed along with their name.
+
+Looking at our earlier example:
+
+```
+Roy
+
+    Phone: 0118 999 881 99 9119 7253
+    Email: roy@renham-industries.co.uk
+    Org:   Renham Industries
+    Role:  IT Support
+    - Best friend is Moss
+```
+
+When this is printed, the role (`IT Support`) and the org (`Renham Industries`) are not printed as separate keywords, but they're included in the name. The role is printed first, then the organisation.
+
+For example:
+
+```
+$ contacts roy it support
+
+Found 1 contact:
+
+Roy (IT Support, Renham Industries)
+
+    Email ... roy@renham-industries.co.uk
+    Phone ... 0118 999 881 99 9119 7253
+    - Best friend is Moss
+
 ```
