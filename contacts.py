@@ -128,11 +128,14 @@ def _print_keywords(contact: Contact, longest_key: int):
         if key in IGNORED_KEYS:
             continue
 
+        # Format the key
+        formatted_key = key.upper() if len(key) <= 3 else key.capitalize()
+
         # Find the value, determine the required spacing, then print
         value = contact.get(key)
         spacing = longest_key - len(key)
         dots = "." * (spacing + 3)
-        print(colored(f"   {key} {dots} {value}", "white"))
+        print(colored(f"   {formatted_key} {dots} {value}", "white"))
 
 
 def _print_notes(contact: Contact):
