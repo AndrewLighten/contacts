@@ -1,13 +1,16 @@
 Metadata-Version: 1.2
 Name: contacts
-Version: 0.1
+Version: 0.2
 Summary: Contact manager
-Home-page: UNKNOWN
+Home-page: https://github.com/AndrewLighten/contacts
 Author: Andrew Lighten
 Author-email: andrew@digital-ironworks.com
-License: UNKNOWN
-Description: UNKNOWN
+License: https://www.apache.org/licenses/LICENSE-2.0
+Description: A tool for searching and displaying contact details based on command line queries
 Keywords: contacts
-Platform: UNKNOWN
-Classifier: License :: OSI Approved :: Python Software Foundation License
+Platform: Operating System :: MacOS :: MacOS X
+Platform: Operating System :: POSIX :: Linux
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Intended Audience :: End Users/Desktop
 Requires-Python: >=3.7.5
