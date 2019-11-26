@@ -1,0 +1,17 @@
+Roy
+
+    Phone: 0118 999 881 99 9119 7253
+    Email: roy@renham-industries.co.uk
+    Org:   Renham Industries
+    Role:  IT Support
+    - Best friend is Moss
+
+Dr Spock
+
+    Nickname: Doctor
+    Email:    spock@enterprise.com
+
+Harry Potter
+
+    Email: harry@hogwarts.co.uk
+    DOB:   1980-07-31
