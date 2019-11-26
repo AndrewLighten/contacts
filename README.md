@@ -68,7 +68,7 @@ $ contacts roy it support
 
 Found 1 contact:
 
-Roy (IT Support, Renham Industries)
+Roy (IT Support at Renham Industries)
 
     Email ... roy@renham-industries.co.uk
     Phone ... 0118 999 881 99 9119 7253
@@ -182,7 +182,35 @@ $ contacts roy it support
 
 Found 1 contact:
 
-Roy (IT Support, Renham Industries)
+Roy (IT Support at Renham Industries)
+
+    Email ... roy@renham-industries.co.uk
+    Phone ... 0118 999 881 99 9119 7253
+    - Best friend is Moss
+
+```
+
+If a contact has multiple roles or multiple organisations, they are all listed. For example:
+
+```
+Roy
+
+    Phone: 0118 999 881 99 9119 7253
+    Email: roy@renham-industries.co.uk
+    Org:   Renham Industries
+    Org:   Arsenal
+    Role:  IT Support
+    - Best friend is Moss
+```
+
+would result in:
+
+```
+$ contacts roy it support
+
+Found 1 contact:
+
+Roy (IT Support at Arsenal and Renham Industries)
 
     Email ... roy@renham-industries.co.uk
     Phone ... 0118 999 881 99 9119 7253
