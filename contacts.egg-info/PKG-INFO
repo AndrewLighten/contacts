@@ -10,7 +10,12 @@ Description: A tool for searching and displaying contact details based on comman
 Keywords: contacts
 Platform: Operating System :: MacOS :: MacOS X
 Platform: Operating System :: POSIX :: Linux
+Classifier: Environment :: Console
 Classifier: Development Status :: 4 - Beta
 Classifier: License :: OSI Approved :: Apache Software License
 Classifier: Intended Audience :: End Users/Desktop
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Natural Language :: English
+Classifier: Topic :: Communications :: Email
+Classifier: Topic :: Office/Business
 Requires-Python: >=3.7.5
