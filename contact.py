@@ -1,6 +1,36 @@
 from dataclasses import dataclass
-from relativedelta import relativedelta
-import datetime
+from typing import List
+
+# Separator used when contact has multiple roles or organisations
+ROLE_ORG_SEP = ","
+
+
+@dataclass
+class KeyValue:
+    """
+    This class represents a key/value pair we've loaded from the contact file.
+    """
+
+    # The key
+    key: str
+
+    # The value
+    value: str
+
+    def __lt__(self, other):
+        """
+        Sort comparison for key/value pairs.
+        
+        Args:
+            other: The key/value pair to sort against.
+        
+        Returns:
+            bool: True if this key is less than the other key; otherwise, False.
+        """
+        if self.key == other.key:
+            return self.value < other.value
+        else:
+            return self.key < other.key
 
 
 @dataclass
@@ -13,10 +43,10 @@ class Contact:
     name: str
 
     # The list of keyword/value pairs we've loaded
-    kv_pairs: {}
+    kv_pairs: [KeyValue]
 
     # The list of notes we've loaded
-    notes: []
+    notes: [str]
 
     def matches(self, pattern: str) -> bool:
         """
@@ -37,8 +67,8 @@ class Contact:
             return True
 
         # Check the values
-        for key in self.kv_pairs:
-            if pattern in self.kv_pairs[key].lower():
+        for kv in self.kv_pairs:
+            if pattern in kv.value.lower():
                 return True
 
         # Check the notes
@@ -49,28 +79,19 @@ class Contact:
         # Not there
         return False
 
-    def get(self, key: str) -> str:
+    def get(self, key: str) -> List[str]:
         """
-        Get the value for a given key.
+        Get the values for a given key.
         
         Args:
             key: The key whose value we want.
         
         Returns:
-            str: The value associated with the key.
+            [str]: The values associated with the key.
         """
 
-        # Find the raw value
-        value = self.kv_pairs.get(key)
-        if not value:
-            return None
-
-        # Intercept date-of-birth and add in their age
-        if key.lower() == "dob":
-            value = value + self._calculate_age(value)
-
-        # Done
-        return value
+        # Get the list of values with this key
+        return [x for x in self.kv_pairs if x.key == key]
 
     def org_and_role(self) -> str:
         """
@@ -84,40 +105,20 @@ class Contact:
         """
 
         # Find the organisation and/or role
-        org = self.kv_pairs.get("Org")
-        role = self.kv_pairs.get("Role")
-        if org and role:
-            return " (" + role + ", " + org + ")"
-        if org:
-            return " (" + org + ")"
-        if role:
-            return " (" + role + ")"
+        org_list = [x.value for x in self.kv_pairs if x.key == "Org"]
+        role_list = [x.value for x in self.kv_pairs if x.key == "Role"]
+
+        # Format as required
+        if org_list and role_list:
+            return (
+                " ("
+                + ROLE_ORG_SEP.join(role_list)
+                + " at "
+                + ROLE_ORG_SEP.join(org_list)
+                + ")"
+            )
+        if org_list:
+            return " (" + ROLE_ORG_SEP.join(org_list) + ")"
+        if role_list:
+            return " (" + ROLE_ORG_SEP.join(role_list) + ")"
         return ""
-
-    def _calculate_age(self, dob: str) -> str:
-        """
-        Calculate someone's age given their date-of-birth.
-        
-        Args:
-            dob: The date of birth, formatted as yyyy-mm-dd.
-        
-        Returns:
-            str: A text description of the person's age.
-        """
-
-        # Catch problems
-        try:
-
-            # Make sure the date-of-birth is formatted ok.
-            birth_date = datetime.datetime.strptime(dob, "%Y-%m-%d")
-
-            # Find today's date
-            today = datetime.datetime.today()
-
-            # Calculate difference
-            age = relativedelta(today, birth_date).years
-            return f" (aged {age})"
-
-        # Parse problem -- ignore it
-        except ValueError:
-            return ""
