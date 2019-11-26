@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import List
 
 # Separator used when contact has multiple roles or organisations
-ROLE_ORG_SEP = ","
+ROLE_ORG_SEP = " and "
 
 
 @dataclass
@@ -104,9 +104,13 @@ class Contact:
             str: The contact's role and organisation.
         """
 
-        # Find the organisation and/or role
+        # Find the organisations and/or roles
         org_list = [x.value for x in self.kv_pairs if x.key == "Org"]
         role_list = [x.value for x in self.kv_pairs if x.key == "Role"]
+
+        # Sort each list
+        org_list.sort()
+        role_list.sort()
 
         # Format as required
         if org_list and role_list:
