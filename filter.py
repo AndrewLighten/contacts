@@ -1,7 +1,8 @@
 from contact import Contact
+from typing import List
 
 
-def filter_contacts(contacts: [Contact], pattern: (str)) -> [Contact]:
+def filter_contacts(contacts: List[Contact], pattern: (str)) -> List[Contact]:
     """
     Filter a collection of contacts to return only those that match all
     provided pattern strings.
@@ -19,11 +20,10 @@ def filter_contacts(contacts: [Contact], pattern: (str)) -> [Contact]:
 
     # Visit each contact and keep those that match every pattern
     for contact in contacts:
-        matches_all = True
         for p in pattern:
             if not contact.matches(p.lower()):
-                matches_all = False
-        if matches_all:
+                break
+        else:
             filtered_list.append(contact)
 
     # Done

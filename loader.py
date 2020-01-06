@@ -6,7 +6,7 @@ from os.path import expanduser
 CONTACT_FILE = "~/contacts.txt"
 
 
-def load_contacts() -> [Contact]:
+def load_contacts() -> List[Contact]:
     """
     Load a list of contacts from a file.
     

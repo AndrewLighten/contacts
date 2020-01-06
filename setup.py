@@ -29,8 +29,5 @@ setup(
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: POSIX :: Linux",
     ],
-    install_requires=[
-        "Click>=7.0",
-        "termcolor>=1.1.0"
-    ]
+    install_requires=["Click>=7.0", "termcolor>=1.1.0"],
 )

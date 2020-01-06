@@ -3,6 +3,7 @@ from contact import Contact
 from filter import filter_contacts
 from termcolor import colored
 from relativedelta import relativedelta
+from typing import List
 
 import datetime
 import click
@@ -39,7 +40,7 @@ def main(pattern: (str)):
 # -----------------------------------------------------------------------------
 
 
-def print_contacts(contacts: [Contact]):
+def print_contacts(contacts: List[Contact]):
     """
     Print the list of matching contacts.
     
@@ -160,7 +161,7 @@ def _print_notes(contact: Contact):
         print(colored(f"   - {note}", "yellow"))
 
 
-def _find_longest_key(contacts: [Contact]) -> int:
+def _find_longest_key(contacts: List[Contact]) -> int:
     """
     Find the longest key in the details we're printing for a list of contacts.
     

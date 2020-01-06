@@ -43,10 +43,10 @@ class Contact:
     name: str
 
     # The list of keyword/value pairs we've loaded
-    kv_pairs: [KeyValue]
+    kv_pairs: List[KeyValue]
 
     # The list of notes we've loaded
-    notes: [str]
+    notes: List[str]
 
     def matches(self, pattern: str) -> bool:
         """
@@ -79,7 +79,7 @@ class Contact:
         # Not there
         return False
 
-    def get(self, key: str) -> List[str]:
+    def get(self, key: str) -> List[KeyValue]:
         """
         Get the values for a given key.
         
@@ -87,7 +87,7 @@ class Contact:
             key: The key whose value we want.
         
         Returns:
-            [str]: The values associated with the key.
+            [KeyValue]: The values associated with the key.
         """
 
         # Get the list of values with this key
@@ -121,8 +121,8 @@ class Contact:
                 + ROLE_ORG_SEP.join(org_list)
                 + ")"
             )
-        if org_list:
+        elif org_list:
             return " (" + ROLE_ORG_SEP.join(org_list) + ")"
-        if role_list:
+        elif role_list:
             return " (" + ROLE_ORG_SEP.join(role_list) + ")"
         return ""
