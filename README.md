@@ -6,7 +6,7 @@ This is a small but useful contact manager.
 
 I've created a `setup.py` file that allows for it to be installed using `pip`.
 
-It requires Python 3.7 or later.
+It requires Python 3.8 or later.
 
 To install:
 

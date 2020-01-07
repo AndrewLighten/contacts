@@ -28,8 +28,7 @@ def load_contacts() -> List[Contact]:
         for line in file.readlines():
 
             # Ignore blank lines
-            content = line.rstrip()
-            if not content:
+            if not (content := line.rstrip()):
                 continue
 
             # If it doesn't start with whitespace, it's a new contact
@@ -54,8 +53,7 @@ def load_contacts() -> List[Contact]:
 
             # No, must be keyword:value
             else:
-                words = trimmed.split(":", 1)
-                if len(words) != 2:
+                if len(words := trimmed.split(":", 1)) != 2:
                     print(f"Bad contact details ({trimmed}) -- ignored")
                 else:
                     key = words[0].strip()

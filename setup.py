@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="contacts",
-    version="0.2",
+    version="1.0",
     packages=find_packages(),
     scripts=["contacts.py"],
     # metadata to display on PyPI
@@ -13,16 +13,16 @@ setup(
     keywords="contacts",
     classifiers=[
         "Environment :: Console",
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         "License :: OSI Approved :: Apache Software License",
         "Intended Audience :: End Users/Desktop",
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
         "Natural Language :: English",
         "Topic :: Communications :: Email",
         "Topic :: Office/Business",
     ],
     entry_points={"console_scripts": ["contacts = contacts:main",],},
-    python_requires=">=3.7.5",
+    python_requires=">=3.8",
     license="https://www.apache.org/licenses/LICENSE-2.0",
     url="https://github.com/AndrewLighten/contacts",
     platforms=[

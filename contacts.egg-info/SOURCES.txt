@@ -1,5 +1,6 @@
 README.md
 contacts.py
+setup.cfg
 setup.py
 contacts.egg-info/PKG-INFO
 contacts.egg-info/SOURCES.txt

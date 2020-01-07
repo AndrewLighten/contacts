@@ -1,6 +1,6 @@
 Metadata-Version: 1.2
 Name: contacts
-Version: 0.2
+Version: 1.0
 Summary: Contact manager
 Home-page: https://github.com/AndrewLighten/contacts
 Author: Andrew Lighten
@@ -11,11 +11,11 @@ Keywords: contacts
 Platform: Operating System :: MacOS :: MacOS X
 Platform: Operating System :: POSIX :: Linux
 Classifier: Environment :: Console
-Classifier: Development Status :: 4 - Beta
+Classifier: Development Status :: 5 - Production/Stable
 Classifier: License :: OSI Approved :: Apache Software License
 Classifier: Intended Audience :: End Users/Desktop
-Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
 Classifier: Natural Language :: English
 Classifier: Topic :: Communications :: Email
 Classifier: Topic :: Office/Business
-Requires-Python: >=3.7.5
+Requires-Python: >=3.8
